@@ -3,12 +3,14 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
+import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon  from '@material-ui/icons/Close';
+import { IconButton } from '@material-ui/core';
 
 const useStyles = makeStyles({
   list: {
@@ -67,14 +69,14 @@ const SwipeableTemporaryDrawer = ({listItems}) => {
   return (
     <div className={classes.drawerContainer}>
         <>
-          <Button onClick={toggleDrawer('top', true)}>Menu</Button>
+          <IconButton onClick={toggleDrawer('left', true)} disableTouchRipple>{state ? <CloseIcon/> : <MenuIcon/>}</IconButton>
           <SwipeableDrawer
-            anchor={'top'}
+            anchor={'left'}
             open={state}
-            onClose={toggleDrawer('top', false)}
-            onOpen={toggleDrawer('top', true)}
+            onClose={toggleDrawer('left', false)}
+            onOpen={toggleDrawer('left', true)}
           >
-            {list('top')}
+            {list('left')}
           </SwipeableDrawer>
         </>
     </div>
